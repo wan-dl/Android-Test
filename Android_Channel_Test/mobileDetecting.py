@@ -11,7 +11,9 @@ def str_sub(content,num):
 def device_detecting():
     """
     Detecting Android Mobile.
-    Objective:解决当多个手机连接电脑，Android adb shell命令使用问题。
+    Objective:解决当多个手机连接电脑，Android adb shell命令使用问题.
+
+    当只有一台手机时，使用adb shell getprop即可获取deviceId.
     """
     phone_brand = []
     serial_num = []
@@ -25,6 +27,7 @@ def device_detecting():
                     phone_brand.append(model[0] + '/' + model[1])
     else:
         print("\n Did not detect any Device.")
+        sys.exit()
     devices_info = dict(zip(phone_brand,serial_num))
     return devices_info
 #device_detecting()
