@@ -5,6 +5,10 @@
 __auther__ = "youxian_tester <sx.work@outlook.com->"
 __version__ = "v1.2"
 
+
+# Monkey是android Sdk自带的一个工具，用于模拟随机事件
+# Monkey运行业内标准：final release前，Monkey跑完的总次数应为25W次，其结果里不允许有nullPointException出现.
+
 import os
 import time
 import shutil
@@ -12,14 +16,11 @@ import random
 import pickle
 import logging
 
-#获取当前目录
-script_dir = os.getcwd()
-
-#获取当前时间
-currentTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-print currentTime
 #设置要测试的app的包名
 com_package_name = "com.jiuai"
+
+#获取当前目录
+script_dir = os.getcwd()
 
 def str_sub(content,num):
     ct = content.replace('[','').replace(']','')
@@ -47,6 +48,28 @@ def device_detecting():
 
 #发送随机事件到app
 def run_events(phone_sn,packageName):
+
+    ''' 
+    关于adb monkey,官网：https://developer.android.com/studio/test/monkey.html
+    Monkey事件：
+        --throttle 在事件之间插入固定延迟
+        --pct-touch 触摸事件百分比
+        --pct-nav 基本导航事件up/down/left/righ
+        --pct-majornav 主要导航事件back key、 menu key等
+        --pct-motion 动作事件
+        --pct-syskeys 系统按键事件Home、Back等
+        --pct-appswitch activity之间的切换事件
+        --pct-anyevent 其他类型事件
+        --pct-trackball 轨迹事件
+        -v 日志级别
+    Monkey调试选项：
+        --ignore-crashes 忽略发生的崩溃继续运行
+        --ignore-timeouts 忽略超时
+        --ignore-security-exceptions 忽略安全异常
+        --kill-process-after-error 发生错误后直接杀掉进程
+        --monitor-native-crashes 监视并报告 Android 系统中本地代码的崩溃事件
+        --wait-dbg 直到连接了调试器才执行monkey测试
+    '''
     return os.system("adb -s {0} shell monkey \
         -p {1} \
         --throttle  10 \
