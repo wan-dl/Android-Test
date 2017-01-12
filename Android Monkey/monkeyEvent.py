@@ -6,6 +6,7 @@ __auther__ = "youxian_tester <sx.work@outlook.com->"
 __version__ = "v1.2"
 
 import os
+import time
 import shutil
 import random
 import pickle
@@ -13,6 +14,12 @@ import logging
 
 #获取当前目录
 script_dir = os.getcwd()
+
+#获取当前时间
+currentTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+print currentTime
+#设置要测试的app的包名
+com_package_name = "com.jiuai"
 
 def str_sub(content,num):
     ct = content.replace('[','').replace(']','')
@@ -38,13 +45,10 @@ def device_detecting():
     devices_info = dict(zip(phone_brand,serial_num))
     return devices_info
 
-#设置要测试的app的包名
-com_package_name = "com.jiuai"
-
 #发送随机事件到app
-def run_events(phone_sn):
+def run_events(phone_sn,packageName):
     return os.system("adb -s {0} shell monkey \
-        -p com.jiuai \
+        -p {1} \
         --throttle  10 \
         --monitor-native-crashes \
         --pct-touch  5 \
@@ -53,16 +57,20 @@ def run_events(phone_sn):
         --pct-motion 10 \
         --pct-appswitch 60 \
         --pct-anyevent 5 \
-        -v -v -v 30000".format(phone_sn))                                                                                                                                                                                                                                                                                                                                 
+        -v -v -v 100".format(phone_sn,packageName))                                                                                                                                                                                                                                                                                                                                 
 
 # 手机日志清除工作
-def cleanup(phone_sn,package):
-    return os.system("adb -s {0} shell logcat -c {1}".format(phone_sn,package))
+def cleanup(phone_sn,packageName):
+    return os.system("adb -s {0} shell logcat -c {1}".format(phone_sn,packageName))
 
 #将日志写入文件
 def log(phone_sn):
-    return os.popen("adb -s {0} shell logcat -d *:W > monkey.txt")
-    
+    #logfile = ''.join(str(time.time()) + '.log')
+    #return os.popen("adb -s {0} shell logcat -d *:W > {1}".format(phone_sn,logfile))
+    with open(str(time.time())+'.log','w') as f:
+        f.writelines(os.popen("adb -s {0} shell logcat -d *:W".format(phone_sn)))
+
+#执行
 try:
     #获取手机的sn
     print("\n %s" % device_detecting())
@@ -70,7 +78,7 @@ try:
         
     try:
         cleanup(phone_sn,com_package_name)
-        run_events(phone_sn)
+        run_events(phone_sn,com_package_name)
     except Exception,e:
         print(e)
     finally:
