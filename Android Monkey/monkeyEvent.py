@@ -10,6 +10,7 @@ __version__ = "v1.2"
 # Monkey运行业内标准：final release前，Monkey跑完的总次数应为25W次，其结果里不允许有nullPointException出现.
 
 import os
+import sys
 import time
 import shutil
 import random
@@ -42,7 +43,8 @@ def device_detecting():
                     model = str_sub(mi,1).split('/')
                     phone_brand.append(model[0] + '/' + model[1])
     else:
-        print("\n Did not detect any Device.")
+        print("\n Didn't detect any Device,Please Check Phone.")
+        sys.exit()
     devices_info = dict(zip(phone_brand,serial_num))
     return devices_info
 
