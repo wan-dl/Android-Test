@@ -35,16 +35,12 @@ def device_detecting():
     phone_brand = []
     serial_num = []
     device_list = os.popen(" adb devices -l").read()
-    if "model" in device_list:
-        serial_num = [sn.split()[0] for sn in device_list.split('\n') if sn and not sn.startswith('List')]
-        for sn in serial_num:
-            for mi in os.popen("adb -s {0} shell getprop".format(sn)):
-                if "ro.build.fingerprint" in mi:
-                    model = str_sub(mi,1).split('/')
-                    phone_brand.append(model[0] + '/' + model[1])
-    else:
-        print("\n Didn't detect any Device,Please Check Phone.")
-        sys.exit()
+    serial_num = [sn.split()[0] for sn in device_list.split('\n') if sn and not sn.startswith('List')]
+    for sn in serial_num:
+        for mi in os.popen("adb -s {0} shell getprop".format(sn)):
+            if "ro.build.fingerprint" in mi:
+                model = str_sub(mi,1).split('/')
+                phone_brand.append(model[0] + '/' + model[1])
     devices_info = dict(zip(phone_brand,serial_num))
     return devices_info
 
@@ -97,17 +93,16 @@ def log(phone_sn):
 
 #执行
 try:
-    #获取手机的sn
-    print("\n %s" % device_detecting())
-    phone_sn = raw_input(" \n -> Please input mobile brand to connect:")
-        
-    try:
-        cleanup(phone_sn,com_package_name)
-        run_events(phone_sn,com_package_name)
-    except Exception,e:
-        print(e)
-    finally:
-        log(phone_sn)
-        
+    if len(device_detecting().values()) == 1:
+        deviceId = device_detecting().values()[0]            
+    elif len(device_detecting().values()) > 1:
+        print("\n %s" % device_detecting())
+        deviceId = raw_input(" \n -> Please input mobile brand to connect:")
+    else:
+        print("\n -> Didn't detect any Device,Please Check Phone.\n")
 except Exception,e:
     print(e)
+finally:
+    log(deviceId)
+    cleanup(deviceId,com_package_name)
+    run_events(deviceId,com_package_name)
