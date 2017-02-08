@@ -1,0 +1,6 @@
+selenium
+Appium-Python-Client
+configparser
+requests
+beautifulsoup4
+prettytable
