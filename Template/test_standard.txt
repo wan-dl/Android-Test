@@ -1,0 +1,10 @@
+
+编写规范
+===========================
+
+UI Elements定位命名规范
+----------------------------
+
+	1. 所有UI元素定位放在同一文件：/conf/element.ini
+	2. 采用别名：EL_BACK = com.alipay.mobile.ui:id/title_bar_back_button
+	3. 别名大写, EL_XXX
