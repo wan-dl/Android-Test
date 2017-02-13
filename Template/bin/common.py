@@ -8,12 +8,17 @@ from time import sleep
 from appium import webdriver
 
 # element locators
-def el_click(driver,el):
+# element click
+def el_id_click(driver,el):
     return driver.find_element_by_id(el).click()
+
+def el_class_click(driver,el):
+    return driver.find_element_by_class_name(el).click()
 
 def el_xpath_click(driver,el):
     return driver.find_element_by_xpath(el).click()
 
+#action
 def el_send_keys(driver,el,data):
     return driver.find_element_by_id(el).send_keys(data)
 
