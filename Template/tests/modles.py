@@ -9,11 +9,13 @@ from configparser import ConfigParser
 from selenium import webdriver
 from appium import webdriver
 
+sys.path.append("..")
 from conf.appium_config import appium_start
-
 from common.utils import el_click_id,el_click_xpath
 from common.utils import screenshot
 from common.utils import MobileSwipe
+
+
 
 # config.ini
 cfg = ConfigParser()

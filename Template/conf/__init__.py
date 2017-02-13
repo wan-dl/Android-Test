@@ -1,6 +1,4 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-__all__ = [
-	"appium_config"
-	]
+from . import appium_config
