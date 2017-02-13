@@ -20,7 +20,7 @@ def appium_start():
         'platformName':'Android',
         'platformVersion':osVersion,
         'deviceName':deviceId,
-        'appPackage':"com.eg.android.AlipayGphone",
+        'appPackage':"com.jiuai",
         'newCommandTimeout':30,    
         'automationName': 'Appium',
         'unicodeKeyboard':True,

@@ -9,13 +9,13 @@ from appium import webdriver
 
 # element locators
 # element click
-def el_id_click(driver,el):
+def el_click_id(driver,el):
     return driver.find_element_by_id(el).click()
 
-def el_class_click(driver,el):
+def el_click_class(driver,el):
     return driver.find_element_by_class_name(el).click()
 
-def el_xpath_click(driver,el):
+def el_click_xpath(driver,el):
     return driver.find_element_by_xpath(el).click()
 
 #action
