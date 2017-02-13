@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
-#2017-1-16 wandali
 
 import os
 import sys
 import time
+import unittest
 
-from appium import webdriver
+from selenium import webdriver
+
