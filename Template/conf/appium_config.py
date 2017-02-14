@@ -16,11 +16,14 @@ deviceAndroidVersion = list(os.popen('adb shell getprop ro.build.version.release
 osVersion = re.findall(r'^\w*\b',deviceAndroidVersion[0])[0]
 
 def appium_start():
+    
     config = {
         'platformName':'Android',
         'platformVersion':osVersion,
         'deviceName':deviceId,
-        'appPackage':"com.jiuai",
+        # 'appPackage':'com.jiuai',
+        # 'appActivity':'.activity.MainActivity',
+        'app':'D:\com.jiuai.apk',
         'newCommandTimeout':30,    
         'automationName': 'Appium',
         'unicodeKeyboard':True,
