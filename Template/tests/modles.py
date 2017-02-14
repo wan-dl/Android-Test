@@ -15,31 +15,17 @@ from common.utils import el_click_id,el_click_xpath
 from common.utils import screenshot
 from common.utils import MobileSwipe
 
-
-
 # config.ini
 cfg = ConfigParser()
 cfg.read('element.ini')
 
-class ThroughPage:
+class ThroughPage(unittest.TestCase):
 
+	def __init__(self):
+		pass
 
-	def setUpClass(self):
-		self.driver = appium_start()
-
-	def test_through_page(self):
-
-		el_click_id(self.driver,cfg.get('Home',"EL_HOME"))
-		screenshot(self.driver,"logs/home.png")
-
-		el_click_xpath(self.driver,cfg.get("Home","EL_EL_MOBILE"))
-		screenshot(self.driver,"logs/mobile.png")
-
-def suite():
-	tests = [
-			"test_through_page"
-			]
-	return unittest.TestSuite(map(ThroughPage,tests))
+	def test_test(self):
+		pass
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(verbosity=2).run(suite())
+    unittest.main()
