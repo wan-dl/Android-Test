@@ -26,6 +26,7 @@ class ThroughPage(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		self.driver = appium_config.appium_start()
+		self.swipe = MobileSwipe()
 
 	def test_through_page(self):
 		
@@ -33,6 +34,9 @@ class ThroughPage(unittest.TestCase):
 			self.driver.implicitly_wait(10)
 		el_click_id(self.driver,cfg.get('Home',"EL_HOME"))
 		screenshot(self.driver,"../logs/home.png")
+
+		for n in range(5):
+			self.swipe.down_swipe(self.driver)
 
 if __name__ == "__main__":
     unittest.main()
