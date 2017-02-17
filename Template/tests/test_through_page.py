@@ -13,7 +13,7 @@ from appium import webdriver
 
 sys.path.append("..")
 from conf import appium_config
-from common.utils import el_click_id,el_click_xpath
+from common.utils import el_id_click,el_xpath_click
 from common.utils import screenshot
 from common.utils import MobileSwipe
 
@@ -32,11 +32,11 @@ class ThroughPage(unittest.TestCase):
 		
 		if self.driver.current_activity != ".activity.MainActivity":
 			self.driver.implicitly_wait(10)
-		el_click_id(self.driver,cfg.get('Home',"EL_HOME"))
+		el_id_click(self.driver,cfg.get('Home',"EL_HOME"))
 		screenshot(self.driver,"../logs/home.png")
 
 		for n in range(5):
-			self.swipe.down_swipe(self.driver)
+			self.swipe.swipe_down(self.driver)
 
 if __name__ == "__main__":
     unittest.main()
