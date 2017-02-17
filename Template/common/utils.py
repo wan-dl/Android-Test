@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
+'''
+    Appium Webdriver utils.
+    Easy to use appium webdriver method.
+'''
+
+__author__ = "wdl"
+__copyright__ = "Copyright 2016"
+__version__ = "v1.0.5"
+
 import os
 import sys
 import unittest
@@ -9,13 +18,13 @@ from appium import webdriver
 
 # element locators
 # element click
-def el_click_id(driver,el):
+def el_id_click(driver,el):
     return driver.find_element_by_id(el).click()
 
-def el_click_class(driver,el):
+def el_class_click(driver,el):
     return driver.find_element_by_class_name(el).click()
 
-def el_click_xpath(driver,el):
+def el_xpath_click(driver,el):
     return driver.find_element_by_xpath(el).click()
 
 #action
@@ -34,22 +43,22 @@ class MobileSwipe():
     def __init__(self):
         pass
 
-    def up_swipe(self,driver):
+    def swipe_up(self,driver):
         width = driver.get_window_size()['width']
         height = driver.get_window_size()['height']
         driver.swipe(width/2, height/4,width/2, height/4*3, 800)
 
-    def down_swipe(self,driver):
+    def swipe_down(self,driver):
         width = driver.get_window_size()['width']
         height = driver.get_window_size()['height']
         driver.swipe(width/2, height/4*3,width/2, height/4, 800)
 
-    def left_swipe(self,driver):
+    def swipe_left(self,driver):
         width = driver.get_window_size()['width']
         height = driver.get_window_size()['height']
         driver.swipe(width/4*3, height/2,width/4, height/2, 800)
 
-    def right_swipe(self,driver):
+    def swipe_right(self,driver):
         width = driver.get_window_size()['width']
         height = driver.get_window_size()['height']
         driver.swipe(width/4, height/2,width/4*3, height/2, 800)
