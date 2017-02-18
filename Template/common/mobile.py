@@ -18,11 +18,11 @@ def get_serialno():
     """
     phone_brand = []
     serial_num = []
-    device_list = os.popen(" adb devices -l").read()
 
     if os.popen("adb get-state").read() != "device":
-        out = os.popen("adb kill-server").read()
-        device_list = os.popen(" adb devices -l").read()
+        os.popen("adb kill-server")
+        os.popen("adb start-server")
+    device_list = os.popen(" adb devices -l").read()
 
     if "model" not in device_list:
         print("-> Did not detect any Device.")
