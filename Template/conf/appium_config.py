@@ -7,23 +7,25 @@ import time
 import re
 from appium import webdriver
 
+sys.path.append("..")
+from common.mobile import get_serialno
+
 #Read mobile deviceId
-readDeviceId = list(os.popen('adb devices -l').readlines())
-deviceId = re.findall(r'^\w*\b', readDeviceId[1])[0]
+device_id = get_serialno()
 
 #Read mobile os Version
-deviceAndroidVersion = list(os.popen('adb shell getprop ro.build.version.release').readlines())
-osVersion = re.findall(r'^\w*\b',deviceAndroidVersion[0])[0]
-
+os_version = os.popen('adb -s {0} shell getprop ro.build.version.release'.format(device_id)).read()
+    
 def appium_start():
     
     config = {
         'platformName':'Android',
-        'platformVersion':osVersion,
-        'deviceName':deviceId,
+        'platformVersion':os_version,
+        'deviceName':device_id,
         # 'appPackage':'com.jiuai',
         # 'appActivity':'.activity.MainActivity',
-        'app':'D:\com.jiuai.apk',
+        'app':'/Users/xiaohutu/GitHub/Android-Test/com.jiuai.apk',
+        #'app':'D:\com.jiuai.apk',
         'newCommandTimeout':30,    
         'automationName': 'Appium',
         'unicodeKeyboard':True,
