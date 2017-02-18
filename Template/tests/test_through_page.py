@@ -22,7 +22,8 @@ cfg = ConfigParser()
 cfg.read('../conf/element.ini')
 
 class ThroughHomePage(unittest.TestCase):
-    
+   
+    #@classmethod,在此类中只进行一次初始化和清理工作 
     @classmethod
     def setUpClass(self):
         self.driver = appium_config.appium_start()
@@ -34,6 +35,7 @@ class ThroughHomePage(unittest.TestCase):
         """
         if self.driver.current_activity != ".activity.MainActivity":
             self.driver.implicitly_wait(10)
+        #self.driver.set_page_load_timeout(30)
         el_id_click(self.driver,cfg.get('Home',"EL_HOME"))
         screenshot(self.driver)
     
@@ -100,6 +102,10 @@ class ThroughHomePage(unittest.TestCase):
         大牌
         """
         pass
+
+    @classmethod
+    def tearDownClass(self):
+        self.driver.quit()
 
 # texture Testcase
 def suite_home():
