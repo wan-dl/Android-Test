@@ -1,4 +1,4 @@
-#/usr/bin/env python
+#/usr/bin/env python/:14:14
 # -*- coding:utf-8 -*
 
 __author__ = "wdl"
@@ -11,7 +11,7 @@ def str_sub(content,num):
     ct = content.replace('[','').replace(']','')
     return ct.split(':')[num].strip()
 
-def detecting():
+def get_serialno():
     """
     Objective:解决当多个手机连接电脑，Android adb shell命令使用问题.
     当只有一台手机时，使用adb get-serialno即可获取deviceId.
@@ -19,20 +19,28 @@ def detecting():
     phone_brand = []
     serial_num = []
     device_list = os.popen(" adb devices -l").read()
-    if "model" in device_list:
+
+    if len(device_list) < 30:
+        os.popen("adb kill-server")
+        device_list = os.popen(" adb devices -l").read()
+
+    if "model" not in device_list:
+        print("-> Did not detect any Device.")
+        sys.exit()
+    else:
         serial_num = [sn.split()[0] for sn in device_list.split('\n') if sn and not sn.startswith('List')]
         for sn in serial_num:
             for mi in os.popen("adb -s {0} shell getprop".format(sn)):
                 if "ro.build.fingerprint" in mi:
                     model = str_sub(mi,1).split('/')
                     phone_brand.append(model[0])
-    else:
-        print("\n Did not detect any Device.")
-        sys.exit()
     devices_info = dict(zip(phone_brand,serial_num))
+
     if len(devices_info.keys()) > 1:
         print(devices_info)
         deviceId = raw_input(" \n -> Please input mobile brand to connect:")
         return deviceID
     elif len(devices_info.keys()) == 1:
         return devices_info.values()
+
+#print(detecting())
