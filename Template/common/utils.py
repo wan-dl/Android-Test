@@ -35,7 +35,7 @@ def el_send_keys(driver,el,data):
 def el_text(driver,el):
     return driver.find_element_by_id(el).text
 
-def screenshot(driver,filename):
+def screenshot(driver):
     filename = ''.join("../logs/" + str(time.time()) + ".png")
     return driver.get_screenshot_as_file(filename)
 
