@@ -41,6 +41,6 @@ def get_serialno():
         deviceId = raw_input(" \n -> Please input mobile brand to connect:")
         return deviceID
     elif len(devices_info.keys()) == 1:
-        return devices_info.values()
+        return devices_info.values()[0]
 
-#print(detecting())
+print(get_serialno())
