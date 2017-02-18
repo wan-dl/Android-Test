@@ -20,8 +20,8 @@ def get_serialno():
     serial_num = []
     device_list = os.popen(" adb devices -l").read()
 
-    if len(device_list) < 30:
-        os.popen("adb kill-server")
+    if os.popen("adb get-state").read() != "device":
+        out = os.popen("adb kill-server").read()
         device_list = os.popen(" adb devices -l").read()
 
     if "model" not in device_list:
@@ -43,4 +43,4 @@ def get_serialno():
     elif len(devices_info.keys()) == 1:
         return devices_info.values()[0]
 
-#print(type(get_serialno()))
+print(type(get_serialno()))
