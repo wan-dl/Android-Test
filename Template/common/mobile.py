@@ -43,4 +43,4 @@ def get_serialno():
     elif len(devices_info.keys()) == 1:
         return devices_info.values()[0]
 
-print(get_serialno())
+#print(type(get_serialno()))
