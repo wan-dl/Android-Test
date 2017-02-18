@@ -12,6 +12,7 @@ __version__ = "v1.0.5"
 
 import os
 import sys
+import time
 import unittest
 from time import sleep
 from appium import webdriver
@@ -35,6 +36,7 @@ def el_text(driver,el):
     return driver.find_element_by_id(el).text
 
 def screenshot(driver,filename):
+    filename = ''.join("../logs/" + str(time.time()) + ".png")
     return driver.get_screenshot_as_file(filename)
 
 # Swipe: Left Right Up Down
