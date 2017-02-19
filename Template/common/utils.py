@@ -17,6 +17,12 @@ import unittest
 from time import sleep
 from appium import webdriver
 
+def wait_time(func):
+    time.sleep(1.3)
+    func()
+    time.sleep(1.3)
+    return func
+
 # element locators
 # element click
 def el_id_click(driver,el):
@@ -35,6 +41,7 @@ def el_send_keys(driver,el,data):
 def el_text(driver,el):
     return driver.find_element_by_id(el).text
 
+@wait_time
 def screenshot(driver):
     filename = ''.join("../logs/" + str(time.time()) + ".png")
     return driver.get_screenshot_as_file(filename)
