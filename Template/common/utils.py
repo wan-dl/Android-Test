@@ -19,9 +19,9 @@ from appium import webdriver
 
 def wait_time(func):
     def inner(*args):
-        time.sleep(0.8)
+        time.sleep(0.5)
         f = func(*args)
-        time.sleep(1)
+        time.sleep(0.5)
         return f
     return inner
 
