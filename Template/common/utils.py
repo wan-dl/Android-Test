@@ -18,13 +18,19 @@ from time import sleep
 from appium import webdriver
 
 def wait_time(func):
-    time.sleep(1.3)
-    func()
-    time.sleep(1.3)
-    return func
+    def inner(*args):
+        time.sleep(0.8)
+        f = func(*args)
+        time.sleep(1)
+        return f
+    return inner
 
 # element locators
 # element click
+
+def el_id(driver,el):
+    return driver.find_element_by_id(el)
+
 def el_id_click(driver,el):
     return driver.find_element_by_id(el).click()
 
@@ -61,6 +67,11 @@ class MobileSwipe():
         width = driver.get_window_size()['width']
         height = driver.get_window_size()['height']
         driver.swipe(width/2, height/4*3,width/2, height/4, 800)
+
+    def swipe_down_half(self,driver):
+        width = driver.get_window_size()['width']
+        height = driver.get_window_size()['height']
+        driver.swipe(width/2, height/4*3,width/2, height/4*2, 800)
 
     def swipe_left(self,driver):
         width = driver.get_window_size()['width']
