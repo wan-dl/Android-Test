@@ -27,10 +27,6 @@ def wait_time(func):
 
 # element locators
 # element click
-
-def el_id(driver,el):
-    return driver.find_element_by_id(el)
-
 def el_id_click(driver,el):
     return driver.find_element_by_id(el).click()
 
