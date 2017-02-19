@@ -36,17 +36,17 @@ class ThroughHomePage(unittest.TestCase):
         if self.driver.current_activity != ".activity.MainActivity":
             self.driver.implicitly_wait(10)
         #self.driver.set_page_load_timeout(30)
-        el_id_click(self.driver,cfg.get('Home',"EL_HOME"))
+        el_id_click(self.driver,cfg.get('Home',"El_Home"))
         screenshot(self.driver)
     
     def test_scan(self):
         """
         首页:二维码扫描
         """
-        el_id_click(self.driver,cfg.get('Home',"EL_QR")) 
+        el_id_click(self.driver,cfg.get('Home',"El_Qr")) 
         screenshot(self.driver)
         time.sleep(1)
-        el_id_click(self.driver,cfg.get('Action',"LEFT"))
+        el_id_click(self.driver,cfg.get('Action',"Left"))
 
     def test_carousel(self):
         """
@@ -58,17 +58,17 @@ class ThroughHomePage(unittest.TestCase):
         """
         首页:广告位-左
         """
-        el_id_click(self.driver,cfg.get('Home',"EL_AD_LEFT"))
+        el_id_click(self.driver,cfg.get('Home',"El_Ad_Left"))
         screenshot(self.driver)
-        el_id_click(self.driver,cfg.get('Action',"LEFT"))
+        el_id_click(self.driver,cfg.get('Action',"Left"))
 
     def test_ad_right(self):
         """
         首页:广告位-右
         """
-        el_id_click(self.driver,cfg.get('Home',"EL_AD_RIGHT"))
+        el_id_click(self.driver,cfg.get('Home',"El_Ad_Right"))
         screenshot(self.driver)
-        el_id_click(self.driver,cfg.get('Action',"LEFT"))
+        el_id_click(self.driver,cfg.get('Action',"Left"))
  
     def test_recommend_class(self):
         pass
@@ -88,7 +88,7 @@ class ThroughHomePage(unittest.TestCase):
         """
         while 1:
             self.swipe.swipe_down(self.driver)
-            if u'推荐' in el_text(self.driver,cfg.get('Home',"EL_TJ")):
+            if u'推荐' in el_text(self.driver,cfg.get('Home',"El_TJ")):
                 screenshot(self.driver)
                 break
     def test_recommend_light(self):
