@@ -19,7 +19,7 @@ from common.utils import MobileSwipe
 
 # config.ini
 cfg = ConfigParser()
-cfg.read('../conf/element.ini')
+cfg.read("../conf/element.ini")
 
 class ThroughHomePage(unittest.TestCase):
    
@@ -36,39 +36,42 @@ class ThroughHomePage(unittest.TestCase):
         if self.driver.current_activity != ".activity.MainActivity":
             self.driver.implicitly_wait(10)
         #self.driver.set_page_load_timeout(30)
-        el_id_click(self.driver,cfg.get('Home',"El_Home"))
+        el_id_click(self.driver,cfg.get("Home","El_Home"))
         screenshot(self.driver)
     
     def test_scan(self):
         """
         首页:二维码扫描
         """
-        el_id_click(self.driver,cfg.get('Home',"El_Qr")) 
+        el_id_click(self.driver,cfg.get("Home","El_Qr")) 
         screenshot(self.driver)
         time.sleep(1)
-        el_id_click(self.driver,cfg.get('Action',"Left"))
+        el_id_click(self.driver,cfg.get("Action","Left"))
 
     def test_carousel(self):
         """
         首页:轮播
         """
-        pass
+        el_id_click(self.driver,cfg.get("Home","El_Carousel"))
+        self.driver.implicitly_wait(10)
+        screenshot(self.driver)
+        el_id_click(self.driver,cfg.get("Action","Left"))
 
     def test_ad_left(self):
         """
         首页:广告位-左
         """
-        el_id_click(self.driver,cfg.get('Home',"El_Ad_Left"))
+        el_id_click(self.driver,cfg.get("Home","El_Ad_Left"))
         screenshot(self.driver)
-        el_id_click(self.driver,cfg.get('Action',"Left"))
+        el_id_click(self.driver,cfg.get("Action","Left"))
 
     def test_ad_right(self):
         """
         首页:广告位-右
         """
-        el_id_click(self.driver,cfg.get('Home',"El_Ad_Right"))
+        el_id_click(self.driver,cfg.get("Home","El_Ad_Right"))
         screenshot(self.driver)
-        el_id_click(self.driver,cfg.get('Action',"Left"))
+        el_id_click(self.driver,cfg.get("Action","Left"))
  
     def test_recommend_class(self):
         pass
@@ -88,7 +91,7 @@ class ThroughHomePage(unittest.TestCase):
         """
         while 1:
             self.swipe.swipe_down(self.driver)
-            if u'推荐' in el_text(self.driver,cfg.get('Home',"El_TJ")):
+            if u"推荐" in el_text(self.driver,cfg.get("Home","El_TJ")):
                 screenshot(self.driver)
                 break
     def test_recommend_light(self):
