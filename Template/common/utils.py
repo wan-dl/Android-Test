@@ -25,28 +25,35 @@ def wait_time(func):
         return f
     return inner
 
-# element locators
-# element click
-def el_id_click(driver,el):
-    return driver.find_element_by_id(el).click()
+# element locators: click
+def el_id_click(driver,element):
+    return driver.find_element_by_id(element).click()
 
-def el_class_click(driver,el):
-    return driver.find_element_by_class_name(el).click()
+def el_class_click(driver,element):
+    return driver.find_element_by_class_name(element).click()
 
-def el_xpath_click(driver,el):
-    return driver.find_element_by_xpath(el).click()
+def el_xpath_click(driver,element):
+    return driver.find_element_by_xpath(element).click()
 
 #action
-def el_send_keys(driver,el,data):
-    return driver.find_element_by_id(el).send_keys(data)
+def el_send_keys(driver,element,data):
+    return driver.find_element_by_id(element).send_keys(data)
 
-def el_text(driver,el):
-    return driver.find_element_by_id(el).text
+def el_text(driver,element):
+    return driver.find_element_by_id(element).text
 
 @wait_time
 def screenshot(driver):
     filename = ''.join("../logs/" + str(time.time()) + ".png")
     return driver.get_screenshot_as_file(filename)
+
+#page element check
+def el_check(driver,element):
+    """
+    使用此方法检测某个元素是否在页面上 
+    assertTrue(el_check(element))
+    """
+    return driver.find_element_by_id(element).is_dispalyed()
 
 # Swipe: Left Right Up Down
 class MobileSwipe():
