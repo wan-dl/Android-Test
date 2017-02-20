@@ -26,7 +26,6 @@ class ThroughHomePage(unittest.TestCase):
     TestCase: Home Page Through.
     Description: 1.元素点击 2.截图 3.点击左上角返回按钮
     """
-   
     #@classmethod,在此类中只进行一次初始化和清理工作 
     @classmethod
     def setUpClass(self):
