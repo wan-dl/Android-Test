@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
-
+#@author:wdl
+#@updatetime: 20170221 v1.0.1
 import os
 import sys
 import time
@@ -20,6 +21,16 @@ from common.utils import MobileSwipe
 # config.ini
 cfg = ConfigParser()
 cfg.read("../conf/element.ini")
+
+def handle_page_return(driver,el):
+    """
+    当从下级页面返回到上级页面时,因元素无法定位或发生异常时,使用系统返回键返回，从而不影响后续case执行结果。
+    """
+    try:
+        el_id_click(driver,el)
+    except Exception as e:
+        print(e)
+        driver.keyevent(4)
 
 class ThroughHomePage(unittest.TestCase):
     """
