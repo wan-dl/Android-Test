@@ -6,6 +6,7 @@ __version__ = "v1.0.1"
 
 import os
 import sys
+import time
 
 def str_sub(content,num):
     ct = content.replace('[','').replace(']','')
@@ -22,6 +23,7 @@ def get_serialno():
     if os.popen("adb get-state").read() != "device":
         os.popen("adb kill-server")
         os.popen("adb start-server")
+        time.sleep(2)
     device_list = os.popen(" adb devices -l").read()
 
     if "model" not in device_list:
