@@ -1,4 +1,4 @@
-# Android logcat使用
+# Android adb logcat使用
 
 ## Android日志说明
 
