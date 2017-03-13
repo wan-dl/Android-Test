@@ -6,6 +6,7 @@
 
 说明		| 命令							| 备注
 --------|-------------------------------|-------------
+wifi    | adb shell dumpsys wifi  |
 网络状态	| adb shell dumpsys netstats	|
 网络连接	| adb shell dumpsys connectivity|
 网络策略	| adb shell dumpsys netpolicy	|
