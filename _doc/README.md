@@ -7,3 +7,10 @@
 ```
   adb shell am start -W com.jiuai/com.jiuai.activity.MainActivity
 ```
+
+### 监控crash
+
+```
+  adb shell am monitor
+```
+
