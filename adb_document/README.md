@@ -18,6 +18,11 @@
 	
 参数  | 使用说明  |备注	
 ------|------|----------
+包信息| adb shell dumpsys package
+网络连接| adb shell dumpsys connectivity
+网络策略	| adb shell dumpsys netpolicy
+网络状态	| adb shell dumpsys netstats
+网络管理	| adb shell dumpsys network_management
 内存	|adb shell dumpsys meminfo
 CPU|	adb shell dumpsys cpuinfo
 帧率|	adb shell dumpsys gfxinfo
