@@ -5,7 +5,7 @@
 ### 计算启动时间
 
 ```
-  adb shell am start -W com.jiuai/com.jiuai.activity.MainActivity
+ $ adb shell am start -W com.jiuai/com.jiuai.activity.MainActivity
 ```
 
 
@@ -15,17 +15,17 @@
 ### adb shell pm list packages
 
 ```
-系统应用 adb shell pm list packages -s	
+系统应用 $ adb shell pm list packages -s	
 
-第三方应用 adb shell pm list packages -3
+第三方应用 $ adb shell pm list packages -3
 
-adb shell pm list packages -f
+$ adb shell pm list packages -f
 
-包名以及安装来源 adb shell pm list packages -i
+包名以及安装来源 $ adb shell pm list packages -i
 
-禁用的应用 adb shell pm list packages -d
+禁用的应用 $ adb shell pm list packages -d
 
-可用的应用 adb shell pm list packages -e
+可用的应用 $ adb shell pm list packages -e
 ```
 
 ### 安装应用
