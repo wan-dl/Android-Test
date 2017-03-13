@@ -8,11 +8,119 @@
   adb shell am start -W com.jiuai/com.jiuai.activity.MainActivity
 ```
 
+
+## adb shell pm
+-----
+
+### adb shell pm list packages
+
+```
+系统应用 adb shell pm list packages -s	
+
+第三方应用 adb shell pm list packages -3
+
+adb shell pm list packages -f
+
+包名以及安装来源 adb shell pm list packages -i
+
+禁用的应用 adb shell pm list packages -d
+
+可用的应用 adb shell pm list packages -e
+```
+### 安装应用
+
+```
+adb shell pm install <PackageName>
+```
+
+### 列出应用信息
+
+```
+adb shell pm dump <PackageName>
+```
+
+### 授予权限
+
+```
+ adb shell pm grant <包名>  <权限名>
+```
+
+### 撤销应用权限
+
+```
+adb shell pm revoke PackAge <权限名称>
+```
+### 清除手机应用数据
+
+```
+adb pm clear
+```
+
+### 列出所有硬件信息
+
+```
+adb shell pm list features
+```
+
+### 列出系统上所有的用户
+
+```
+adb shell pm list user
+```
+
+## adb shell am
+----
+
+### 结束应用
+
+```
+adb shell am force-stop
+```
+
+### 停止进程
+
+```
+adb shell am kill-all
+```
+
+### 发送文本
+
+```
+   adb shell input text HELLO
+```
+
+### 发送按键事件
+
+```
+   adb shell input keyevent 3
+```
+
+### 模拟触摸事件
+
+```
+adb shell input tap 1000 800
+```
+
+### 模拟长按事件
+
+```
+adb shell input tap 1000 800 1000 800 2000
+```
+
+### 模拟滑动事件
+
+```
+adb shell input swipe 1000 800 100 800
+```
+
 ### 监控crash
 
 ```
   adb shell am monitor
 ```
+
+## adb shell dumpsys
+----
 
 ### adb dumpsys
 	
