@@ -25,6 +25,8 @@ import pandas as pd
 version_catalogue = str(raw_input(" \n -> Please input App Channel catalogue: "))
 ApkTool = r"D:\Android\apktool.jar"
 now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+#apktool.jar地址
 apktool_download_url = 'https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.1.0.jar'
 
 #存放测试结果
