@@ -27,6 +27,7 @@ adb shell pm list packages -f
 
 可用的应用 adb shell pm list packages -e
 ```
+
 ### 安装应用
 
 ```
@@ -69,7 +70,6 @@ adb shell pm list user
 ```
 
 ## adb shell am
-----
 
 ### 结束应用
 
