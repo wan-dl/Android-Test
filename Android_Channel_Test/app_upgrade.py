@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 # 2016-06-09
-#Android app发版前最后检查
+# Android app发版前最后检查
 
 __auther__ = "youxian_tester <sx.work@outlook.com->"
 __version__ = "v1.2"
