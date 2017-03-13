@@ -1,2 +1,0 @@
-
-# Appium Test
