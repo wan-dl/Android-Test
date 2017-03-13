@@ -1,6 +1,8 @@
 
 # Android ADB
 
+[TOC]
+
 ### 计算启动时间
 
 ```
