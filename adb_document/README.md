@@ -10,7 +10,7 @@
 
 
 ## adb shell pm
------
+
 
 ### adb shell pm list packages
 
@@ -120,10 +120,9 @@ adb shell input swipe 1000 800 100 800
 ```
 
 ## adb shell dumpsys
-----
 
-### adb dumpsys
-	
+> adb shell dumpsys services
+
 参数  | 使用说明  |备注	
 ------|------|----------
 包信息| adb shell dumpsys package
