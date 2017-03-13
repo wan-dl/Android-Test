@@ -116,7 +116,7 @@ def get_apk_umeng_value(reverse_folder):
 #随机取签名
 def get_apk_signature(reverse_folder):
     cert_path = "original//META-INF"
-    cert = [ os.path.join(version_catalogue,folder,cert_path,'CERT.RSA') for folder in reverse_folder ]
+    cert = [ os.path.join(version_catalogue,folder,cert_path,'JIUAI.RSA') for folder in reverse_folder ]
     num = random.randint(0,len(cert))
     return os.popen('keytool.exe -printcert -v -file {0}'.format(cert[num])).read()
 
