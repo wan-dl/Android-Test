@@ -15,7 +15,7 @@ def str_sub(content,num):
 def get_serialno():
     """
     Objective:解决当多个手机连接电脑，Android adb shell命令使用问题.
-    当只有一台手机时，使用adb get-serialno即可获取deviceId.
+    当只有一台手机时，自动连接。
     """
     phone_brand = []
     serial_num = []
