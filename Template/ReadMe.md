@@ -1,4 +1,5 @@
 ﻿本文不在叙述Appium环境安装。
+ 
  如有需要请参考：http://www.jianshu.com/p/7a6fa7ab662b
 
 #### 1. 创建项目目录
